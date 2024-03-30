@@ -5,7 +5,7 @@ import { connect } from 'cloudflare:sockets';
 // [Windows] Press "Win + R", input cmd and run:  Powershell -NoExit -Command "[guid]::NewGuid()"
 let userID = 'd342d11e-d424-4583-b36e-524ab1f0afa4';
 
-const proxyIPs = ['cdn.xn--b6gac.eu.org', 'cdn-all.xn--b6gac.eu.org', 'workers.cloudflare.cyou'];
+const proxyIPs = ['cdn.xn--b6gac.eu.org', 'cdn-all.xn--b6gac.eu.org', 'workers.bestip.one'];
 
 // if you want to use ipv6 or single proxyIP, please add comment at this line and remove comment at the next line
 let proxyIP = proxyIPs[Math.floor(Math.random() * proxyIPs.length)];
@@ -69,12 +69,6 @@ export default {
 								"Content-Type": "text/plain;charset=utf-8",
 							}
 						});
-					};
-					case `/bestip/${userID_Path}`: {
-						const headers = request.headers;
-						const url = `https://sub.xf.free.hr/auto?host=${request.headers.get('Host')}&uuid=${userID}&path=/`;
-						const bestSubConfig = await fetch(url, { headers: headers });
-						return bestSubConfig;
 					};
 					default:
 						// return new Response('Not found', { status: 404 });
@@ -718,7 +712,7 @@ ${vlessSec}
 ---------------------------------------------------------------`;
 	}).join('\n');
 	const sublink = `https://${hostName}/sub/${userIDArray[0]}?format=clash`
-	const subbestip = `https://${hostName}/bestip/${userIDArray[0]}`;
+	const subbestip = `https://sub.xf.free.hr/auto?host=${hostName}&uuid=${userIDArray[0]}`;
 	const clash_link = `https://api.v1.mk/sub?target=clash&url=${encodeURIComponent(sublink)}&insert=false&emoji=true&list=false&tfo=false&scv=true&fdn=false&sort=false&new_name=true`;
 	// Prepare header string
 	const header = `
@@ -756,7 +750,6 @@ ${vlessSec}
 	<meta name='twitter:image' content='https://cloudflare-ipfs.com/ipfs/bafybeigd6i5aavwpr6wvnwuyayklq3omonggta4x2q7kpmgafj357nkcky' />
 	<meta property='og:image:width' content='1500' />
 	<meta property='og:image:height' content='1500' />
-
 	<style>
 	body {
 	  font-family: Arial, sans-serif;
@@ -764,7 +757,6 @@ ${vlessSec}
 	  color: #333;
 	  padding: 10px;
 	}
-
 	a {
 	  color: #1a0dab;
 	  text-decoration: none;
@@ -773,7 +765,6 @@ ${vlessSec}
 	  max-width: 100%;
 	  height: auto;
 	}
-
 	pre {
 	  white-space: pre-wrap;
 	  word-wrap: break-word;
@@ -788,18 +779,15 @@ ${vlessSec}
 		background-color: #333;
 		color: #f0f0f0;
 	  }
-
 	  a {
 		color: #9db4ff;
 	  }
-
 	  pre {
 		background-color: #282a36;
 		border-color: #6272a4;
 	  }
 	}
 	</style>
-
 	<!-- Add FontAwesome library -->
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
   </head>
